@@ -246,8 +246,11 @@ class Grille:
 
 
 # initialise l'ensemble
-shutil.rmtree("./histo/")
-os.mkdir("./histo/")
+try:
+    shutil.rmtree("histo")
+except:
+    pass
+os.mkdir("histo")
 
 # verifie que l'on a bien deux joueurs
 if len(sys.argv) != 3:
@@ -312,8 +315,8 @@ else:
 
 print "Grille finale : \n"
 grille.afficher()
-grille.exporter("./test/grille_{}.txt".format(grille.etape))
-grille.exportPNG("./test/grille_{0:0=2d}.png".format(grille.etape))
+grille.exporter("./histo/grille_{}.txt".format(grille.etape))
+grille.exportPNG("./histo/grille_{0:0=2d}.png".format(grille.etape))
 
 # fais un gif de tout ca 1
-subprocess.call(["convert", "-delay", "100", "-loop", "0", "./test/*.png", "animated.gif"])
+subprocess.call(["convert", "-delay", "100", "-loop", "0", "./histo/*.png", "animated.gif"])
