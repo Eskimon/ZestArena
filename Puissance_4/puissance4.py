@@ -48,10 +48,6 @@ class Grille:
         # re.search(r'1{4}', chaine)
         # re.search(r'2{4}', chaine)
 
-        # test si egalite parfaite
-        if self.etape == self.taille:
-            return 42
-
         # cherche horizontalement
         for y in range(0, self.hauteur):
             chaine = ""
@@ -124,6 +120,10 @@ class Grille:
             res = re.search(r'2{4}', chaine)
             if res is not None:
                 return 2
+
+         # test si egalite parfaite
+        if self.etape == self.taille:
+            return 42
 
         return 0 # Personne ne gagne pour le moment
 
